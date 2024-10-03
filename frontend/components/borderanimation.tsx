@@ -1,8 +1,12 @@
 
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 
+interface BorderAnimationProps {
+    isInView: boolean;
+    onAnimationComplete: () => void;
+}
 
-const BorderAnimation = ({ isInView, onAnimationComplete }) => {
+const BorderAnimation = ({ isInView, onAnimationComplete }: BorderAnimationProps) => {
     
     return (
         <>

@@ -2,24 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import BorderAnimation from "./borderanimation";
 import '@/styles/service_list.css';
-
-type Service = {
-    id: number;
-    name: string;
-};
-
-const services: Service[] = [
-    { id: 0, name: 'Покраска ногтей' },
-    { id: 1, name: 'Покраска волос' },
-    { id: 2, name: 'Стрижка' },
-    { id: 3, name: 'Педикюр' },
-    { id: 4, name: 'Маникюр' },
-    { id: 5, name: 'Укладка волос' },
-    { id: 6, name: 'Массаж' },
-    { id: 7, name: 'Эпиляция' },
-    { id: 8, name: 'Косметические процедуры' },
-    { id: 9, name: 'Макияж' },
-];
+import { services } from '@/api/servicelist';
 
 const ServiceList = () => {
     const ref = useRef(null);
@@ -42,9 +25,10 @@ const ServiceList = () => {
         const timer = setTimeout(() => {
             if (isInView) {
                 setAnimationComplete(true);
+                
             }
         }, 100); 
-    
+        // console.log('Animation complete');
         return () => clearTimeout(timer);
     }, [isInView]);
     
@@ -80,9 +64,10 @@ const ServiceList = () => {
                                 key={service.id}
                                 initial={{ translateY: 0 }} 
                                 animate={animationComplete ? { translateY: (index % 2 === 0 ? -40 : -108) } : { translateY: 0 }} 
-                                transition={{ duration: 0.5, delay: 0.6 }} 
+                                transition={{ duration: 0.8, delay: 0.6 }} 
                             >
-                                <div className="service__list__block"></div>
+                                {/* <div className="service__list__block"> */} {/* </div> */}
+                                <img className="service__list__img" src={service.img}/>
                                 <p className="service__list__name">{service.name}</p>
                             </motion.li>    
                         ))}

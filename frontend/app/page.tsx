@@ -3,7 +3,7 @@ import "@/styles/main.css";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import ServiceList from "@/components/servicelist";
-
+import Review from "@/components/ui/review";
 
 export default function Main() {
   return (
@@ -34,8 +34,8 @@ export default function Main() {
             <p className="main-info-desc">В нашем салоне красоты мы предлагаем широкий спектр услуг, направленных на то, чтобы подчеркнуть вашу индивидуальность и сделать вас еще более привлекательными.</p>
             <Button className="main-info-button" variant={"outline"} >Подробнее</Button>
           </div>
-          
       </div>
+        <Review />
     </div>
   );
 }

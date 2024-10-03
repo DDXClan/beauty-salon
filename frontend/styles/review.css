@@ -1,0 +1,103 @@
+.all__review{
+    margin-top: 176px;
+}
+
+.review__title{
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    margin-bottom: 24px;
+    color: rgb(201, 182, 253);
+}
+
+.carousel{
+
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 1300px;
+    
+}
+.review__text{
+    display: -webkit-box;
+    font-size: 1rem;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    width: 300px;
+    user-select: none; /* Для современных браузеров */
+    -webkit-user-select: none; /* Для Safari */
+    -moz-user-select: none; /* Для Firefox */
+    -ms-user-select: none; /* Для Internet Explorer/Edge */
+}
+
+.review{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    
+}
+
+.review__list{
+    height: 90px;
+    width: 350px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.review__img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover ;
+}
+
+
+.review__name {
+    font-size: 1.5rem; /* Увеличиваем размер шрифта для имени */
+    user-select: none; /* Для современных браузеров */
+    -webkit-user-select: none; /* Для Safari */
+    -moz-user-select: none; /* Для Firefox */
+    -ms-user-select: none; /* Для Internet Explorer/Edge */
+}
+
+.review__list__text__name{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.star-rating {
+    display: flex; 
+}
+
+.star {
+    user-select: none; /* Для современных браузеров */
+    -webkit-user-select: none; /* Для Safari */
+    -moz-user-select: none; /* Для Firefox */
+    -ms-user-select: none; /* Для Internet Explorer/Edge */
+    
+    font-size: 24px; /* Размер звезд */
+    margin-right: 2px; /* Отступ между звездами */
+}
+
+.gold {
+    color: gold; /* Цвет золотых звезд */
+}
+
+.gray {
+    color: gray; /* Цвет серых звезд */
+}
+
+
+.text-current {
+    color: rgb(255, 255, 255); /* Цвет для текущего слайда */
+}
+
+.text-muted {
+    color: gray; /* Цвет для неактивных слайдов */
+}
