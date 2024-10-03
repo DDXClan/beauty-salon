@@ -1,0 +1,132 @@
+:root{
+    --defualt-text-color: white;
+}
+
+
+.main{
+    color: var(--defualt-text-color);
+    
+    
+}
+
+.header-main{
+    display: flex;
+    max-width: 1200px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 280px;
+}
+
+.header-main-text{
+    color: white;
+    font-weight: normal;
+}
+
+.header-main-text-title{
+    font-size: 32px;
+    color: rgba(255, 255, 255, 0.281);
+    margin-bottom: -6px;
+}
+
+.header-main-text-linar {
+    background: linear-gradient(90deg, rgb(155, 120, 253), rgb(218, 2, 123, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* font-size: 40px;  */
+    /* margin-bottom: 8px;  */
+}
+
+
+.header-main-text-name{
+    font-size: 40px;
+    /* color: rgb(139, 118, 173); */
+    margin-bottom: 8px;
+}
+
+.header-main-text-desc{
+    color: rgba(255, 255, 255, 0.459);
+    font-size: 18px;
+    width: 36.5rem;
+    margin-bottom: 32px;
+}
+
+
+.header-main-button{
+    background-color: rgba(139, 118, 173, 0.65);
+    font-size: 16px;
+    margin-bottom: 80px;
+    &:hover{
+        background-color: rgb(139, 118, 173);
+    }
+}
+
+
+/*Социальные сети*/
+.header-main-text-social-text{   
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.60);
+    margin-bottom: 8px;
+}
+
+.header-main-text-social-icons{
+    display: flex;
+    gap: 8px;
+   
+}
+
+.header-main-text-social-icons img:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+}
+
+
+.header-main-img{
+    margin-left: 180px;
+}
+
+
+.main-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin-top: 72px;
+}
+
+
+.main-info-text{
+    margin-top: 124px;
+    text-align: center;
+    margin-left: 124px;
+    width: 500px;
+}
+
+.main-info-title{
+    color: rgb(155, 120, 253);
+    font-weight: bold;
+    font-size: 40px;
+    margin: 0 auto;
+    line-height: 1;
+    margin-bottom: 24px;
+    
+}
+
+.main-info-desc{
+    font-weight: 600;
+    margin-bottom: 24px;
+    font-size: 16px;
+}
+
+
+
+.main-info-button{
+    background-color: black;
+    font-size: 16px;
+    color: white;
+    &:hover{
+        background-color: rgb(22, 22, 22);
+        color: white;
+    }
+}
