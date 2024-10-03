@@ -1,0 +1,76 @@
+:root {
+    --text-color-header: white;
+    --bg-text-color-header: rgba(39, 39, 42, 1);
+}
+
+.header {
+    font-size: 16px;
+    width: 1256px;
+    height: 64px;
+    margin: 32px auto 0;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    position: sticky; 
+    top: 32px; 
+    z-index: 1000; 
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 32px;
+    margin-bottom: 48px;
+    backdrop-filter: blur(64px);
+    font-weight: 400;
+}
+
+.header .header-nav {
+    display: flex;
+    width: 100%;
+}
+
+.header-ul {
+    display: flex;
+
+}
+
+.header-li  {
+    color : var(--text-color-header);
+    display: flex;
+    list-style: none;
+    padding: 8px 10px 8px 10px;
+    border-radius: 32px;
+}
+
+.headerLink {
+    cursor: pointer;
+
+    font-size: 16px;
+    color : var(--text-color-header);
+    text-decoration: none;
+    padding: 8px 10px 8px 10px;
+    transition: all 0.3s ease;
+    border-radius: 32px;
+    &:hover {
+        background-color: var(--bg-text-color-header);
+    }
+}
+
+.headerLink-main{
+    margin-left: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    color : rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 7px 10px 7px 10px;
+    transition: all 0.3s ease;
+    border-radius: 32px;
+    &:hover {
+        background-color: var(--bg-text-color-header);
+    }
+}
+
+.headerLink.active,
+.headerLink-main.active {
+    background-color: var(--bg-text-color-header); 
+    color: var(--text-color-header); 
+}
+
+
