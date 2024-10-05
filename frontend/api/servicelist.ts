@@ -1,10 +1,6 @@
-export type Service = {
-    id: number;
-    name: string;
-    img?: string;
-};
+import { Service_list } from "@/schemas/servicelist";
 
-export const services: Service[] = [
+export const services_list: Service_list[] = [
     { id: 0, name: 'Покраска ногтей', img :'nail.png' },
     { id: 1, name: 'Покраска волос', img: 'color.png'},
     { id: 2, name: 'Стрижка' , img: 'hair.png'},

@@ -2,7 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import BorderAnimation from "./borderanimation";
 import '@/styles/service_list.css';
-import { services } from '@/api/servicelist';
+import { services_list } from '@/api/servicelist';
 
 const ServiceList = () => {
     const ref = useRef(null);
@@ -22,15 +22,10 @@ const ServiceList = () => {
 
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            if (isInView) {
-                setAnimationComplete(true);
-                
-            }
-        }, 100); 
-        // console.log('Animation complete');
-        return () => clearTimeout(timer);
-    }, [isInView]);
+        if (isInView && !animationComplete) {
+            setAnimationComplete(true);
+        }
+    }, [isInView, animationComplete]);
     
     
 
@@ -58,12 +53,12 @@ const ServiceList = () => {
                             visible: { opacity: 1, transition: { staggerChildren: 0.5 } }
                         }}
                     >
-                        {services.map((service, index) => (
+                        {services_list.map((service, index) => (
                             <motion.li
                                 className={`service__list`}
                                 key={service.id}
                                 initial={{ translateY: 0 }} 
-                                animate={animationComplete ? { translateY: (index % 2 === 0 ? -40 : -108) } : { translateY: 0 }} 
+                                animate={isInView ? { translateY: (index % 2 === 0 ? -40 : -108) } : { translateY: 0 }} 
                                 transition={{ duration: 0.8, delay: 0.6 }} 
                             >
                                 {/* <div className="service__list__block"> */} {/* </div> */}

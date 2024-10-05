@@ -19,8 +19,8 @@ const Header = () => {
                     </li>
                     <li className="header-li">
                         <Link 
-                            href="/reviews" 
-                            className={`headerLink ${pathname === '/reviews' ? 'active' : ''}`}
+                            href="/services" 
+                            className={`headerLink ${pathname === '/services' ? 'active' : ''}`}
                         >
                             Услуги
                         </Link>
