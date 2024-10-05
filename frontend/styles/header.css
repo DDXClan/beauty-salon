@@ -16,7 +16,7 @@
     z-index: 1000; 
     background-color: rgba(255, 255, 255, 0);
     border-radius: 32px;
-    margin-bottom: 48px;
+    margin-bottom: 24px;
     backdrop-filter: blur(64px);
     font-weight: 400;
 }
@@ -72,5 +72,4 @@
     background-color: var(--bg-text-color-header); 
     color: var(--text-color-header); 
 }
-
 

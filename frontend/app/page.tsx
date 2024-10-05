@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import ServiceList from "@/components/servicelist";
 import Review from "@/components/ui/review";
+import Footer from "@/components/ui/footer";
 
 export default function Main() {
   return (
@@ -35,7 +36,11 @@ export default function Main() {
             <Button className="main-info-button" variant={"outline"} >Подробнее</Button>
           </div>
       </div>
+      <div className="main-review">
         <Review />
+      </div>
+      <Footer />
     </div>
+
   );
 }
