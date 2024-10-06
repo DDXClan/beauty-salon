@@ -37,3 +37,40 @@ class User(BaseModel):
     role: str
     image: str 
 
+class UserResponse(BaseModel):
+    id: int
+    username: str 
+    phone_number: Optional[str] = None
+    image: Optional[str]
+
+    @field_validator('image')
+    @classmethod
+    def validate_image(cls, v):
+        if v is None:
+            return 'placeholder.png'
+        return v
+
+
+class UserUpdate(BaseModel):
+    username: Optional[str] = None
+    phone_number: Optional[str] = None
+    password: Optional[str] = None
+    image: Optional[str] = None
+
+    @field_validator('phone_number')
+    @classmethod
+    def validate_phone_number(cls, v):
+        if "+" in v:
+            v = v.replace("+","")
+        if not re.match(r'^[0-9]{11}$', v):
+            raise ValueError('Invalid phone number')
+        return v
+    
+
+    @field_validator('password')
+    @classmethod
+    def validate_password(cls, v):
+        if not re.match(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$', v):
+            raise ValueError('Invalid password')
+        return v
+        

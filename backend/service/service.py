@@ -11,8 +11,14 @@ class ServiceService:
     def get_all_service_filter_by(self, **filter_by):
         return self.service_repository.get_all_filter_by(**filter_by)
     
+    def get_one_service_filter_by(self, **filter_by):
+        return self.service_repository.get_one_filter_by(**filter_by)
+    
     def get_all_category_filter_by(self, **filter_by):
         return self.category_repository.get_all_filter_by(**filter_by)
+    
+    def get_one_category_filter_by(self, **filter_by):
+        return self.category_repository.get_one_filter_by(**filter_by)
     
     def create_category(self, data: CategoryCreate):
         category = self.category_repository.add(data.model_dump())

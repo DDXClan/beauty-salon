@@ -20,8 +20,8 @@ class CategoryUpdate(BaseModel):
 class ServiceCreate(BaseModel):
     name: str = Field(max_length=20)
     category_id: int = Field(ge=1)
-    start_price: float = Field(get=0.0)
-    end_price: float = Field(get=0.0)
+    start_price: float = Field(ge=0.0)
+    end_price: float = Field(ge=0.0)
     description: Optional[str] = None
 
 
@@ -61,4 +61,16 @@ class ServiceUpdate(BaseModel):
         return v
 
 
+class Category(BaseModel):
+    id: int
+    name: str
+    description: Optional[str] = None
 
+
+class Service(BaseModel):
+    id: int
+    name: str
+    category : Category
+    start_price: float
+    end_price: float
+    description: Optional[str] = None

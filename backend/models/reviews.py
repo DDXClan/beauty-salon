@@ -5,10 +5,9 @@ class Review(Base):
 
     __tablename__ = 'reviews'
 
-
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     user_id: Mapped[int] = mapped_column(nullable=False)
     service_id: Mapped[int] = mapped_column(nullable=False)
-    rating: Mapped[float] = mapped_column()
-    message: Mapped[str] = mapped_column()
+    raiting: Mapped[float] = mapped_column()
+    text: Mapped[str] = mapped_column()
 
