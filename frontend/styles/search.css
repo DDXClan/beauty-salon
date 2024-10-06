@@ -1,8 +1,18 @@
+.header__services{
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 120px;
+    z-index: 1000;
+}
+
+
 .all__search {
     display: flex;
     align-items: center;
     justify-content: center;
-
+   
 }
 
 
@@ -11,6 +21,7 @@
     /* display: inline-block; */
     justify-content: center;
     align-items: center;
+  
 }
 
 .search-icon {
@@ -28,6 +39,7 @@
     height: 64px;
     width: 850px;
     border-radius: 32px;
+    
 }
 
 
@@ -42,11 +54,7 @@
     border: 1px solid #383838;
 }
 
-.header__services{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 
 .cat__select{
     background-color: #101010;
