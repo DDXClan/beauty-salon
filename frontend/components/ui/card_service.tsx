@@ -62,10 +62,7 @@ const CardService = () => {
     function onSubmit(data: z.infer<typeof FormSchema>) {
         toast({
             title: "Выбранный день ",
-            description: `${data.appointment_time}`,
-            action: (
-                <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
-            ),
+            description: `${format(data.appointment_time, "PPP")}`,
             })
     }
 
@@ -97,7 +94,7 @@ const CardService = () => {
                             </DialogTrigger>
                             <DialogContent className="sm:max-w-[425px]" >
                             <Form {...form}>
-                                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 ">
                                     <FormField
                                     control={form.control}
                                     name="appointment_time"
@@ -128,9 +125,10 @@ const CardService = () => {
                                             mode="single"
                                             selected={field.value}
                                             onSelect={field.onChange}
-                                            disabled={(date) =>
-                                            date < new Date()
-                                            }
+                                            disabled={(date) => {
+                                                const day = date.getDay();
+                                                return date < new Date() || day === 0 || day === 6; 
+                                            }}
                                         />
                                         </PopoverContent>
                                     </Popover>
