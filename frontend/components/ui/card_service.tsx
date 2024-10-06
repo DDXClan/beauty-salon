@@ -60,7 +60,7 @@ const CardService = () => {
                     </Card>
                 </li>
                 </SheetTrigger>
-                <SheetContent position="right" size="xl">
+                <SheetContent style={{zIndex: 50}} position="right" size="xl">
                     <SheetHeader>
                         <Image className="card__img" width={300} height={300} src={service.img || "/logo.png"} alt={service.name} />
                         <SheetTitle>{service.name}</SheetTitle>
@@ -92,7 +92,7 @@ const CardService = () => {
                                             mode="single"
                                             selected={date}
                                             onSelect={setDate}
-                                            initialFocus
+                                            // initialFocus
                                             />
                                         </PopoverContent>
                                     </Popover> 
