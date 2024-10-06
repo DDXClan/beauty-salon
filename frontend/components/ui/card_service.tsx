@@ -1,32 +1,40 @@
 import * as React from "react"
-import { Calendar } from "@/components/ui/calendar"
+import { zodResolver } from "@hookform/resolvers/zod"
 import { CalendarIcon } from "@radix-ui/react-icons"
 import { format } from "date-fns"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 import { cn } from "@/lib/utils"
+import { toast, useToast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/button"
+import { ToastAction } from "@/components/ui/toast"
+import { Calendar } from "@/components/ui/calendar"
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+
 import {
     Card,
     CardContent,
-    CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
   } from "@/components/ui/card"
   import '@/styles/card_service.css'
   import Image from 'next/image'
-  import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-  } from "@/components/ui/popover"
 import { services } from "@/api/service"
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
     DialogTrigger,
   } from "@/components/ui/dialog"
 
@@ -35,14 +43,31 @@ import {
     SheetClose,
     SheetContent,
     SheetDescription,
-    SheetFooter,
     SheetHeader,
     SheetTitle,
     SheetTrigger,
   } from "@/components/ui/sheet"
 
+const FormSchema = z.object({
+    appointment_time: z.date({
+        required_error: "Обязательно выберете дату",
+    }),
+})
 const CardService = () => {
-    const [date, setDate] = React.useState<Date>()
+    const form = useForm<z.infer<typeof FormSchema>>({
+        resolver: zodResolver(FormSchema),
+      })
+    const { toast } = useToast()
+
+    function onSubmit(data: z.infer<typeof FormSchema>) {
+        toast({
+            title: "Выбранный день ",
+            description: `${data.appointment_time}`,
+            action: (
+                <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
+            ),
+            })
+    }
 
     return ( 
         <ul className="card__ul">
@@ -70,35 +95,52 @@ const CardService = () => {
                             <DialogTrigger asChild>
                                 <Button variant="outline">Выбрать дату и время</Button>
                             </DialogTrigger>
-                            <DialogContent className="sm:max-w-[425px]">
-                                <DialogHeader>
-                                <DialogTitle>Выберите дату и время</DialogTitle>
-                                </DialogHeader>
-                                 <Popover>
-                                        <PopoverTrigger asChild>
-                                            <Button
-                                            variant={"outline"}
-                                            className={cn(
-                                                "w-[374px] justify-start text-left font-normal",
-                                                !date && "text-muted-foreground"
-                                            )}
-                                            >
-                                            <CalendarIcon className="mr-2 h-4 w-4" />
-                                            {date ? format(date, "PPP") : <span>Pick a date</span>}
-                                            </Button>
+                            <DialogContent className="sm:max-w-[425px]" >
+                            <Form {...form}>
+                                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                                    <FormField
+                                    control={form.control}
+                                    name="appointment_time"
+                                    render={({ field }) => (
+                                        <FormItem className="flex flex-col">
+                                        <FormLabel>Выберете день приема</FormLabel>
+                                        <Popover>
+                                            <PopoverTrigger asChild>
+                                            <FormControl>
+                                                <Button
+                                                variant={"outline"}
+                                                className={cn(
+                                                    "w-[374px] pl-3 text-left font-normal",
+                                                    !field.value && "text-muted-foreground"
+                                                )}
+                                                >
+                                                {field.value ? (
+                                                    format(field.value, "PPP")
+                                                ) : (
+                                                    <span>Выберете день</span>
+                                                )}
+                                                <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                                                </Button>
+                                            </FormControl>
                                         </PopoverTrigger>
                                         <PopoverContent className="w-auto p-0" align="start">
-                                            <Calendar 
+                                        <Calendar
                                             mode="single"
-                                            selected={date}
-                                            onSelect={setDate}
-                                            initialFocus
-                                            />
+                                            selected={field.value}
+                                            onSelect={field.onChange}
+                                            disabled={(date) =>
+                                            date < new Date()
+                                            }
+                                        />
                                         </PopoverContent>
-                                    </Popover> 
-                                <DialogFooter>
-                                <Button style={{justifyContent: "center", width: "100%"}} type="submit">Записаться</Button>
-                                </DialogFooter>
+                                    </Popover>
+                                    <FormMessage />
+                                    </FormItem>
+                                )}
+                                />
+                                <Button type="submit" style={{width: '100%'}}>Записаться</Button>
+                            </form>
+                            </Form>
                             </DialogContent>
                         </Dialog>
                         <SheetClose />
