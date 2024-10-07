@@ -1,7 +1,6 @@
-import { Check, ChevronsUpDown } from "lucide-react"
-import * as React from "react"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { Check, ChevronsUpDown } from "lucide-react";
+import * as React from "react";
+import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -9,17 +8,21 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command"
+} from "@/components/ui/command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
+import { categories } from "@/api/category";
 
-import { categories } from "@/api/category"
- 
+type CategoryProps = {
+    selectedCategory: string;
+    setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
+}
 
-const SelectCategory = () => {
+
+const SelectCategory: React.FC<CategoryProps> = ({ selectedCategory, setSelectedCategory }) => {
     const [open, setOpen] = React.useState(false);
     const [value, setValue] = React.useState("");
 
@@ -33,7 +36,7 @@ const SelectCategory = () => {
                     className="cat__select w-[250px] justify-between"
                 >
                     {value
-                        ? categories.find(category => category.name === value)?.name
+                        ? categories.find(category => category.name === value)?.name 
                         : "Выберите категорию..."}
                     <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
@@ -47,9 +50,10 @@ const SelectCategory = () => {
                             {categories.map(category => (
                                 <CommandItem
                                     key={category.id}
-                                    value={category.name}
+                                    value={category.name} 
                                     onSelect={(currentValue) => {
                                         setValue(currentValue === value ? "" : currentValue);
+                                        setSelectedCategory(currentValue === value ? "" : currentValue); 
                                         setOpen(false);
                                     }}
                                 >
