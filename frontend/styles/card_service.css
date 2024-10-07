@@ -41,3 +41,10 @@
     width: 240px;
     height: 300px;
 }
+
+
+.card__img{
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
