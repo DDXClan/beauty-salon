@@ -15,7 +15,7 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    width: 1300px;
+    width: 1200px;
     
 }
 .review__text{
@@ -41,7 +41,7 @@
 }
 
 .review__list{
-    height: 90px;
+    height: 85px;
     width: 350px;
     display: flex;
     justify-content: center;
@@ -53,6 +53,7 @@
     width: 80px;
     height: 80px;
     object-fit: cover ;
+    margin-left: 16px;
 }
 
 
@@ -70,6 +71,9 @@
     justify-content: space-between;
 }
 
+.review__list__text{
+    margin-left: 8px;
+}
 
 .star-rating {
     display: flex; 

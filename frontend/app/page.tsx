@@ -5,7 +5,7 @@ import Image from "next/image";
 import ServiceList from "@/components/servicelist";
 import Review from "@/components/ui/review";
 import Footer from "@/components/ui/footer";
-
+import Link from "next/link";
 export default function Main() {
   return (
     <div className="main">
@@ -16,7 +16,9 @@ export default function Main() {
             <h1 className="header-main-text-name">Волшебство стиля и красоты!</h1>
           </div>
           <p className="header-main-text-desc">Мы предлагаем широкий спектр услуг, чтобы подчеркнуть вашу индивидуальность и сделать вас еще более красивыми.</p>
-          <Button className="header-main-button">Подробнее</Button>
+          <Link href="/services">
+            <Button className="header-main-button">Подробнее</Button>
+          </Link>
           <div className="header-main-text-social">
             <p className="header-main-text-social-text">Мы в соцсетях</p>
             <div className="header-main-text-social-icons">
@@ -33,7 +35,7 @@ export default function Main() {
           <div className="main-info-text">
             <h2 className="main-info-title">Наши услуги</h2>
             <p className="main-info-desc">В нашем салоне красоты мы предлагаем широкий спектр услуг, направленных на то, чтобы подчеркнуть вашу индивидуальность и сделать вас еще более привлекательными.</p>
-            <Button className="main-info-button" variant={"outline"} >Подробнее</Button>
+            <Link href="/services"> <Button className="main-info-button" variant={"outline"} >Подробнее</Button> </Link>
           </div>
       </div>
       <div className="main-review">

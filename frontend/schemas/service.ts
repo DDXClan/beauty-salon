@@ -4,5 +4,8 @@ export type Service = {
     description?: string;
     img?: string;
     id_category: number;
-    categoryName?: string;
+    category: {
+        id: number;
+        name: string;
+    };
 }

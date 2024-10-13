@@ -17,20 +17,20 @@ const Footer = () => {
                     <ul className='footer__ul'>
                         <div className='footer__pages'>
                             <h2 className='footer__title'>Страницы</h2>
-                            <li className='footer__li'><Link href="/main">Главная</Link></li>
-                            <li className='footer__li'><Link href="/reviews">Наши услуги</Link></li>
+                            <li className='footer__li'><Link href="/">Главная</Link></li>
+                            <li className='footer__li'><Link href="/services">Наши услуги</Link></li>
+                            <li className='footer__li'><Link href="/auth">Авторизация</Link></li>
                         </div>
                         <div className='footer__links'>
                             <h2 className='footer__title'>Ссылки</h2>
-                            <li className='footer__li'><Link href = "https://t.me/Konaisya">Konaisya</Link></li>
-                            <li className='footer__li'><Link href = "">ZencorZ</Link></li>
-                            <li className='footer__li'><Link href = "">CVIImE</Link></li>
-                            <li className='footer__li'><Link href = "">ultimap</Link></li>
+                            <li className='footer__li'><Link href = "https://t.me/Konaisya">YouTube</Link></li>
+                            <li className='footer__li'><Link href = "">VK</Link></li>
+                            <li className='footer__li'><Link href = "">Telegram</Link></li>
                         </div>
-                        <div className='footer__social'>
+                        {/* <div className='footer__social'>
                             <li className='footer__li'>Discord</li>
                             <li className='footer__li'>Github</li>
-                        </div>
+                        </div> */}
                     </ul>
                 </nav>
             </div>

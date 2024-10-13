@@ -14,8 +14,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { categories } from "@/api/category";
-
+// import { categories } from "@/api/category";
+import useCategory from "@/hooks/useCategory"
 type CategoryProps = {
     selectedCategory: string;
     setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
@@ -25,7 +25,7 @@ type CategoryProps = {
 const SelectCategory: React.FC<CategoryProps> = ({ selectedCategory, setSelectedCategory }) => {
     const [open, setOpen] = React.useState(false);
     const [value, setValue] = React.useState("");
-
+    const categories = useCategory()
     return ( 
         <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>

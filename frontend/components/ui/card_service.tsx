@@ -31,7 +31,9 @@ import {
   } from "@/components/ui/card"
   import '@/styles/card_service.css'
   import Image from 'next/image'
-import { services } from "@/api/service"
+// import { services } from "@/api/service"
+import  useService  from "@/hooks/useService"
+
 import {
     Dialog,
     DialogContent,
@@ -56,12 +58,15 @@ const FormSchema = z.object({
     }),
 })
 const CardService = () => {
+    const services = useService()
+    
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
       })
     const { toast } = useToast()
     const [searchTerm, setSearchTerm] = React.useState('');
     const [selectedCategory, setSelectedCategory] = React.useState('');
+    
     function onSubmit(data: z.infer<typeof FormSchema>) {
         toast({
             title: "Выбранный день ",
@@ -71,7 +76,7 @@ const CardService = () => {
     
     const filteredServices = services.filter(service => {
         const matchesSearchTerm = service.name.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesCategory = selectedCategory ? service.categoryName === selectedCategory : true; 
+        const matchesCategory = selectedCategory ? service.category.name === selectedCategory : true; 
         return matchesSearchTerm && matchesCategory;
     });
     
@@ -104,7 +109,7 @@ const CardService = () => {
                                     <Image className="card__img" width={300} height={300} src={service.img || "/logo.png"} alt={service.name} />
                                     <SheetTitle>{service.name}</SheetTitle>
                                     <SheetDescription>{service.description}</SheetDescription>
-                                    <p>Категория: {service.categoryName}</p>
+                                    <p>Категория: {service.category.name}</p>
                                     <Dialog>
                                         <DialogTrigger asChild>
                                             <Button variant="outline">Выбрать дату и время</Button>

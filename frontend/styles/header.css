@@ -5,7 +5,8 @@
 
 .header {
     font-size: 16px;
-    width: 1256px;
+    /* width: 1256px; */
+    width: 67%;
     height: 64px;
     margin: 32px auto 0;
     display: flex;
@@ -23,12 +24,14 @@
 
 .header .header-nav {
     display: flex;
-    width: 100%;
+    width: 100%;   
 }
+
+
 
 .header-ul {
     display: flex;
-
+    
 }
 
 .header-li  {
@@ -73,3 +76,33 @@
     color: var(--text-color-header); 
 }
 
+.header-li-auth {
+    position: absolute;
+    right: 0%;
+    color : var(--text-color-header);
+    display: flex;
+    list-style: none;
+    padding: 8px 16px 8px 16px;
+
+}
+
+.headerLink-auth {
+    cursor: pointer;
+    font-size: 16px;
+    color : var(--text-color-header);
+    text-decoration: none;
+    padding: 8px 16px 8px 16px;
+    transition: all 0.3s ease;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+
+    &:hover {
+        background-color: #ffffff;
+        color: black;
+    }
+}
+
+.headerLink-auth.active {
+    background-color: #ffffff;
+    color: black;
+}

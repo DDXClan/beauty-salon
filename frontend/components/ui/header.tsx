@@ -25,6 +25,14 @@ const Header = () => {
                             Услуги
                         </Link>
                     </li>
+                    <li className="header-li-auth">
+                        <Link 
+                            href="/auth" 
+                            className={`headerLink-auth ${pathname === '/auth' ? 'active' : ''}`}
+                        >
+                            Авторизация
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </div>

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import '@/styles/review.css';
-import { reviews } from '@/api/review';
+// import { reviews } from '@/api/review';
+import useReviews from '@/hooks/useReview';
 import StarRating from './starrating'; 
 import Autoplay from "embla-carousel-autoplay";
 import {
@@ -18,6 +19,8 @@ const Review = () => {
     const [current, setCurrent] = React.useState(0);
     const [count, setCount] = React.useState(0);
 
+    const reviews = useReviews();
+ 
     useEffect(() => {
         if (!api) {
             return;
@@ -56,14 +59,14 @@ const Review = () => {
                         {Array.from(reviews).map((review, index) => (
                             <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                                 <div className="p-3">
-                                    <Card>
-                                        <CardContent className="p-3">
+                                    <Card style={{ width: '392px' }}>
+                                        <CardContent className="p-3" style={{ width: '100%' }} >
                                             <div className="review__list">
-                                                <img src={review.img} alt={review.name} className="review__img" />
+                                                <img src={review.user.image} alt={review.username} className="review__img" />
                                                 <div className='review__list__text'>
                                                     <div className='review__list__text__name'>
-                                                        <h2 className='review__name'>{review.name}</h2>
-                                                        <StarRating rating={review.stars || 0} /> 
+                                                        <h2 className='review__name'>{review.user.username}</h2>
+                                                        <StarRating rating={review.raiting || 0} /> 
                                                     </div>
                                                     <p className='review__text'>{review.text}</p>
                                                 </div>
