@@ -4,7 +4,7 @@ import type { Service } from '@/schemas/service';
 
 const useService = () => {
     const [services, setServices] = useState<Service[]>([]);
-
+    
     useEffect(() => {
         const fetchServices = async () => {
             const fetchedServices = await getServices();

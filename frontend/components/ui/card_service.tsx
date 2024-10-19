@@ -32,8 +32,7 @@ import {
   import '@/styles/card_service.css'
   import Image from 'next/image'
 // import { services } from "@/api/service"
-import  useService  from "@/hooks/useService"
-
+import  useService from "@/hooks/useService"
 import {
     Dialog,
     DialogContent,
@@ -66,7 +65,7 @@ const CardService = () => {
     const { toast } = useToast()
     const [searchTerm, setSearchTerm] = React.useState('');
     const [selectedCategory, setSelectedCategory] = React.useState('');
-    
+
     function onSubmit(data: z.infer<typeof FormSchema>) {
         toast({
             title: "Выбранный день ",
@@ -87,7 +86,7 @@ const CardService = () => {
                 <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
                 <SelectCategory selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
             </div>
-            
+
             <ul className="card__ul">
                 {filteredServices.length > 0 ? (
                     filteredServices.map(service => (

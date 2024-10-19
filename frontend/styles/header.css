@@ -1,6 +1,6 @@
 :root {
     --text-color-header: white;
-    --bg-text-color-header: rgba(39, 39, 42, 1);
+    --bg-text-color-header: #0f0f0f;
 }
 
 .header {
@@ -51,12 +51,14 @@
     padding: 8px 10px 8px 10px;
     transition: all 0.3s ease;
     border-radius: 32px;
+    
     &:hover {
         background-color: var(--bg-text-color-header);
     }
 }
 
 .headerLink-main{
+    
     margin-left: 12px;
     cursor: pointer;
     font-size: 16px;

@@ -46,7 +46,7 @@ const Auth = () => {
                 <Input id="password" type="password" required />
                 </div>
                 <Button type="submit" className="w-full">
-                Login
+                    Войти
                 </Button>
             </div>
             {/* <div className="mt-4 text-center text-sm">
@@ -61,7 +61,7 @@ const Auth = () => {
         <TabsContent value="register">
         <Card className="mx-auto max-w-sm">
             <CardHeader>
-            <CardTitle className="text-2xl">Регистрации</CardTitle>
+            <CardTitle className="text-2xl">Регистрация</CardTitle>
             <CardDescription>
                 Введите данные для регистрации
             </CardDescription>
@@ -85,7 +85,7 @@ const Auth = () => {
                 <Input id="password" type="password" required />
                 </div>
                 <Button type="submit" className="w-full">
-                    Login
+                    Зерегестрироваться
                 </Button>
             </div>
             {/* <div className="mt-4 text-center text-sm">
