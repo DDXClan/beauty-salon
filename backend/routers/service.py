@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile
+from utils.image import save_image
 from dependencies import get_service_service, ServiceService, get_current_admin, get_current_user, get_review_service, ReviewService, get_user_service, UserService
 from schemas.service import CategoryCreate, CategoryUpdate, ServiceCreate, ServiceUpdate, Service, Category
 from schemas.reviews import ReviewCreate, Review, ReviewUpdate, UserResponse
@@ -91,7 +92,8 @@ async def get_service(id: int, service_service: ServiceService = Depends(get_ser
                                     description=category.description),
                 start_price=service.start_price,
                 end_price=service.end_price,
-                description=service.description)
+                description=service.description,
+                image=service.image)
 
 
 @router.delete('/{id}')
@@ -104,7 +106,7 @@ async def delete_service(id: int,
     return {'status': Status.SUCCESS.value}
 
 
-@router.patch('/{id}')
+@router.put('/{id}')
 async def update_service(id: int, new_service: ServiceUpdate,
                           service_service: ServiceService = Depends(get_service_service), user = Depends(get_current_admin)):
     service = service_service.get_one_service_filter_by(id=id)
@@ -113,4 +115,9 @@ async def update_service(id: int, new_service: ServiceUpdate,
     update_service = service_service.update_service(id, new_service)
     return {'status': Status.SUCCESS.value, 'service': update_service}
 
+@router.patch('/{service_id}')
+async def update_image(service_id: int, image: UploadFile = File(...), service_service: ServiceService = Depends(get_service_service), user = Depends(get_current_user)):
+    service_service.update_service(service_id, ServiceUpdate(image=image.filename))
+    update_image = save_image(image)
+    return update_image
 

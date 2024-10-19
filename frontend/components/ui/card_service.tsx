@@ -70,6 +70,12 @@ const CardService = () => {
         toast({
             title: "Выбранный день ",
             description: `${format(data.appointment_time, "PPP")}`,
+<<<<<<< Updated upstream
+=======
+            action: (
+                <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
+            ),
+>>>>>>> Stashed changes
             })
     }
     
