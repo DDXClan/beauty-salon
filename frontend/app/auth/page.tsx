@@ -63,12 +63,6 @@ const Auth = () => {
                 {error && <p>{error}</p>}
             </div>
             </form>
-            {/* <div className="mt-4 text-center text-sm">
-                У вас нету аккаунта?{" "}
-                <Link href="#" className="underline">
-                    Зарегестрируйтесь
-                </Link>
-            </div> */}
             </CardContent>
         </Card>
         </TabsContent>
@@ -102,13 +96,6 @@ const Auth = () => {
                     Зерегестрироваться
                 </Button>
             </div>
-            {/* <div className="mt-4 text-center text-sm">
-                Уже есть аккаунт?{" "}
-                
-                <Link href="#" className="underline">
-                    Войти
-                </Link>
-            </div> */}
             </CardContent>
         </Card>
         </TabsContent>
