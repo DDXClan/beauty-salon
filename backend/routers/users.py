@@ -28,7 +28,7 @@ async def get_order(id: int | None = Query(None),
     if id:
         filters['id'] = id
     orders = list()
-    for order in order_service.get_all_filter_by(**filters):
+    for order in order_service.get_all_filter_by(user_id=user.id, **filters):
         service = service_service.get_one_service_filter_by(id=order.service_id)
         category = service_service.get_one_category_filter_by(id=service.category_id)
         orders.append(Order(id=order.id, 

@@ -73,7 +73,8 @@ async def get_services(name: str | None = Query(None),
                                                   description=category.description),
                                 start_price=service.start_price,
                                 end_price=service.end_price,
-                                description=service.description))
+                                description=service.description,
+                                image=service.image))
     return response
 
 
