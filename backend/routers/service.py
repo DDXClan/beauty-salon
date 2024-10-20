@@ -10,10 +10,10 @@ router = APIRouter()
 @router.post('/categories', status_code=201)
 async def create_service(new_service: CategoryCreate, 
                          service_service: ServiceService = Depends(get_service_service), user = Depends(get_current_admin)):
-    service = service_service.create_category(new_service)
+    service, category = service_service.create_category(new_service)
     if service == Status.FILLED.value:
         raise HTTPException(status_code=400, detail={'status': Status.FILLED.value})
-    return {'status': Status.SUCCESS.value, 'category': new_service}
+    return {'status': Status.SUCCESS.value, 'category': category}
 
 @router.get('/categories')
 async def get_categories(name: str | None = Query(None),

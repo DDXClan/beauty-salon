@@ -24,7 +24,7 @@ class ServiceService:
         category = self.category_repository.add(data.model_dump())
         if not category:
             return Status.FILLED.value
-        return Status.SUCCESS.value
+        return Status.SUCCESS.value, Category(id=category.id, name=category.name)
     
     def delete_category(self, id: int):
         return self.category_repository.delete(id)
