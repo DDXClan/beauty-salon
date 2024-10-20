@@ -1,5 +1,7 @@
-import Link from "next/link"
+"use client"
 
+import Link from "next/link"
+import * as React from "react"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -17,8 +19,17 @@ import {
     TabsTrigger,
   } from "@/components/ui/tabs"
 
+import { useLogin } from "@/hooks/useLogin";
+
 
 const Auth = () => {
+    const { handleLogin, loading, error } = useLogin();
+    const [username, setUsername] = React.useState('');
+    const [password, setPassword] = React.useState('');
+    const onSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        handleLogin(username, password);
+      };
     return ( 
         <Tabs defaultValue="login" className="w-[400px]" style={{margin: "0 auto", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
         <TabsList className="grid w-full grid-cols-2">
@@ -34,21 +45,24 @@ const Auth = () => {
             </CardDescription>
             </CardHeader>
             <CardContent>
+            <form onSubmit={onSubmit}>
             <div className="grid gap-4">
                 <div className="grid gap-2">
                     <Label htmlFor="username">Имя пользователя</Label>
-                    <Input id="username" type="text"  required />
+                    <Input id="username" type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
                 </div>
                 <div className="grid gap-2">
                 <div className="flex items-center">
                     <Label htmlFor="password">Password</Label>
                 </div>
-                <Input id="password" type="password" required />
+                <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 </div>
-                <Button type="submit" className="w-full">
-                    Войти
+                <Button type="submit" className="w-full"  disabled={loading}>
+                    {loading ? 'Вход...' : 'Войти'}
                 </Button>
+                {error && <p>{error}</p>}
             </div>
+            </form>
             {/* <div className="mt-4 text-center text-sm">
                 У вас нету аккаунта?{" "}
                 <Link href="#" className="underline">

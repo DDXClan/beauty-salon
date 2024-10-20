@@ -62,7 +62,13 @@ const Review = () => {
                                     <Card style={{ width: '392px', border: 'none' }}>
                                         <CardContent className="p-3" style={{ width: '100%' }} >
                                             <div className="review__list">
-                                                <img src={review.user.image} alt={review.username} className="review__img" />
+                                                <img src={review.user.image}
+                                                  onError={(e) => { 
+                                                    const target = e.target as HTMLImageElement; 
+                                                    target.onerror = null; 
+                                                    target.src = 'placeholder.png'; }} 
+                                                alt={review.username} className="review__img" 
+                                                />
                                                 <div className='review__list__text'>
                                                     <div className='review__list__text__name'>
                                                         <h2 className='review__name'>{review.user.username}</h2>
