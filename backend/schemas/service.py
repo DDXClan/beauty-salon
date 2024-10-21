@@ -3,7 +3,7 @@ from typing import List, Optional
 
 
 class CategoryCreate(BaseModel):
-    name: str = Field(max_length=20)
+    name: str = Field(max_length=100)
     description: Optional[str] = None
 
 class CategoryUpdate(BaseModel):
@@ -13,12 +13,12 @@ class CategoryUpdate(BaseModel):
     @field_validator('name')
     @classmethod
     def name_len_validate(cls, v: str) -> str:
-        if (len(v) > 20):
-            raise ValueError('Name must be less than 20 characters')
+        if (len(v) > 100):
+            raise ValueError('Name must be less than 100 characters')
         return v
     
 class ServiceCreate(BaseModel):
-    name: str = Field(max_length=20)
+    name: str = Field(max_length=100)
     category_id: int = Field(ge=1)
     start_price: float = Field(ge=0.0)
     end_price: float = Field(ge=0.0)
@@ -36,8 +36,8 @@ class ServiceUpdate(BaseModel):
     @field_validator('name')
     @classmethod
     def name_len_validate(cls, v: str) -> str:
-        if (len(v) > 20):
-            raise ValueError('Name must be less than 20 characters')
+        if (len(v) > 100):
+            raise ValueError('Name must be less than 100 characters')
         return v
     
     @field_validator('category_id')

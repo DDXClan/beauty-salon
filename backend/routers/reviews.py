@@ -68,3 +68,25 @@ def delete_review(review_id: int, review_service: ReviewService = Depends(get_re
         raise HTTPException(status_code=403, detail={'status': Status.FORBIDDEN.value})
     review = review_service.delete_review(review_id)
     return {'status': Status.SUCCESS.value}
+
+@router.get('/me')
+def get_reviews(limit: int | None = Query(None), 
+                max_rating: int | None = Query(None), 
+                min_rating: int | None = Query(None), 
+                service_id: int |None = Query(None), 
+                user_id: int | None = Query(None),
+                review_service: ReviewService = Depends(get_review_service), user_service: UserService = Depends(get_user_service), user = Depends(get_current_user)):
+    reviews = review_service.get_review_filter(limit=limit, max_rating=max_rating, min_rating=min_rating, service_id=service_id, user_id=user.id)
+
+    response = []
+    for review in reviews:
+        user = user_service.get_user_filter_by(id=review.user_id)
+        response.append(Review(id=review.id, 
+                               service_id=review.service_id, 
+                               raiting=review.raiting, 
+                               text=review.text, 
+                               user=UserResponse(id=user.id, 
+                                                 username=user.username, 
+                                                 phone_number=user.phone_number,
+                                                 image=user.image)))
+    return response
