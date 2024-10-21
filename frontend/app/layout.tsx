@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/ui/header";
 import { Toaster } from "@/components/ui/toaster"
-import * as React from "react"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
 import { type ThemeProviderProps } from "next-themes/dist/types"
 
@@ -14,7 +13,6 @@ export const metadata: Metadata = {
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   return <NextThemesProvider {...props}>{children}</NextThemesProvider>
 }
-
 
 export default function RootLayout({
   children,
@@ -29,11 +27,14 @@ export default function RootLayout({
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-          >
+        >
         <Header />
         {children}
         <Toaster />
+        
         </ThemeProvider>
+        
+        
       </body>
     </html>
   );

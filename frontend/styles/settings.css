@@ -1,0 +1,32 @@
+.settings{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.settings__form{
+    max-width:200px;
+}
+
+
+.settings__title{
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.phone__input{
+    margin-bottom: 16px;
+}
+
+.username__input{
+    margin-bottom: 8px;
+}
+
+.password__input{
+    margin-bottom: 16px;
+
+}
+
+.label__settings{
+    color: rgba(255, 255, 255, 0.479);
+}

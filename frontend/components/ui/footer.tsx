@@ -23,7 +23,7 @@ const Footer = () => {
                         </div>
                         <div className='footer__links'>
                             <h2 className='footer__title'>Ссылки</h2>
-                            <li className='footer__li'><Link href = "https://t.me/Konaisya">YouTube</Link></li>
+                            <li className='footer__li'><Link href = "">YouTube</Link></li>
                             <li className='footer__li'><Link href = "">VK</Link></li>
                             <li className='footer__li'><Link href = "">Telegram</Link></li>
                         </div>

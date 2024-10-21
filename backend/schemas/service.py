@@ -31,6 +31,7 @@ class ServiceUpdate(BaseModel):
     start_price: Optional[float] = None
     end_price: Optional[float] = None
     description: Optional[str] = None
+    image: Optional[str] = None
 
     @field_validator('name')
     @classmethod
@@ -74,3 +75,4 @@ class Service(BaseModel):
     start_price: float
     end_price: float
     description: Optional[str] = None
+    image: Optional[str] = 'placeholder.png'

@@ -3,7 +3,7 @@ import { getReviews } from '@/api/review';
 import type { Review } from '@/schemas/review';
 
 
-const useReviews = () => {
+export const useReviews = () => {
     const [reviews, setReviews] = useState<Review[]>([]); 
   
     useEffect(() => {

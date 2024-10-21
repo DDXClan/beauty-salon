@@ -50,3 +50,5 @@ class ServiceService:
         entity['id'] = id
         entity = {k: v for k, v in entity.items() if v is not None}
         return self.service_repository.update(entity)
+
+

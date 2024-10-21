@@ -16,7 +16,7 @@ const Profile = () => {
     const profile = useProfile();
     return ( 
         <div className="profile">
-            <h1>{profile.profile?.username}</h1>
+            <h1 style={{ fontSize: "32px", marginBottom: "20px" }}>Ваши заказы</h1>
             <div className="profile__content">
                 <Card_order />
             </div>

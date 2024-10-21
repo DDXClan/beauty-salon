@@ -1,6 +1,6 @@
 export type Profile = {
     id: number;
     username: string;
-    phone_number: number;
-    image: string;
+    phone_number: string;
+    image?: string;
 }

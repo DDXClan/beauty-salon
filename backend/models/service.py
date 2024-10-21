@@ -20,6 +20,7 @@ class Service(Base):
     start_price: Mapped[float] = mapped_column(nullable=False)
     end_price: Mapped[float] = mapped_column()
     description: Mapped[str]
+    image: Mapped[str]
 
 
 class ServiceImage(Base):

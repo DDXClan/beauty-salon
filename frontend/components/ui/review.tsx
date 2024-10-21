@@ -43,7 +43,7 @@ const Review = () => {
     return ( 
         <div className='all__review'>
             <h2 className='review__title'>Наши отзывы</h2>
-            <div className='review' >
+            <div className='review'>
                 <Carousel
                     opts={{
                         align: "start",
@@ -57,9 +57,9 @@ const Review = () => {
                 >
                     <CarouselContent>
                         {Array.from(reviews).map((review, index) => (
-                            <CarouselItem  key={index} className="md:basis-1/2 lg:basis-1/3">
+                            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                                 <div className="p-3">
-                                    <Card style={{ width: '392px', border: 'none' }}>
+                                    <Card style={{ width: '392px' }}>
                                         <CardContent className="p-3" style={{ width: '100%' }} >
                                             <div className="review__list">
                                                 <img src={review.user.image}

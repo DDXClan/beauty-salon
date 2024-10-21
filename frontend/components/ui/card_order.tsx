@@ -11,13 +11,13 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
-import { getOrdersProfile } from "@/api/profile";
 import { useOrdersProfile } from "@/hooks/useProfile";
 import { useProfile } from "@/hooks/useProfile";
-
+import { useReviews } from "@/hooks/useReview";
 
 const Card_order = () => {
     const profile  = useProfile();
+    const reviews = useReviews();
     const { orders, loading, error } = useOrdersProfile();
     const formatDate = (dateString: string): string => {
         const date = new Date(dateString);
@@ -51,8 +51,8 @@ const Card_order = () => {
                             <DrawerTitle>{profile.profile?.username}</DrawerTitle>
                             <DrawerTitle>Оценка: 5</DrawerTitle> 
                         </div>
-                        <DrawerDescription style={{margin: "0 auto"}} className="w-[408px]">Ну вообще прикольный салон но можно мне кажется лучше, вот ЕСЛИБ МНЕ ПОДРОЧИЛИ. 
-                            Если исполните мою мечту возможно поставлю 5fives звезд но а пока 1 и все тут
+                        <DrawerDescription style={{margin: "0 auto"}} className="w-[408px]">
+                            
                         </DrawerDescription>
                     </DrawerHeader>
                     <DrawerFooter>
@@ -68,5 +68,3 @@ const Card_order = () => {
  
 export default Card_order;
 
-
-{/* <Button variant={"outline"} className="w-[261px] h-[48px] profile__card__button"> Ваш отзыв</Button> */}

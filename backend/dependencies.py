@@ -42,6 +42,7 @@ def get_employee_repository(db: Session = Depends(get_session)):
 
 def get_service_service(service_repository: ServicerRepository = Depends(get_service_repository),
                         category_service: ServicerRepository = Depends(get_category_repository),
+                        image_repository: ServicerRepository = Depends(get_service_image_repository)
                         ) -> ServiceService:
     return ServiceService(service_repository=service_repository,
                           category_repository=category_service)

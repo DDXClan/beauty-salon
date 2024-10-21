@@ -25,10 +25,11 @@ import { useLogin } from "@/hooks/useLogin";
 const Auth = () => {
     const { handleLogin, loading, error } = useLogin();
     const [username, setUsername] = React.useState('');
-    const [password, setPassword] = React.useState('');
+    const [password, setPassword] = React.useState('');;
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         handleLogin(username, password);
+        
       };
     return ( 
         <Tabs defaultValue="login" className="w-[400px]" style={{margin: "0 auto", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
