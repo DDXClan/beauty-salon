@@ -2,12 +2,10 @@ import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 const refreshAuthToken = async (): Promise<string | null> => {
     try {
-      const response = await axios.post('http://localhost:8000/api/auth/refresh', {}, {
-        withCredentials: true, 
-      });
-      const { token } = response.data; 
-      localStorage.setItem('token', token.access_token); 
-      return token;
+      const response = await axios.get('http://localhost:8000/api/auth/refresh', {withCredentials: true});
+      const { access_token } = response.data; 
+      localStorage.setItem('token', access_token); 
+      return access_token;
     } catch (error) {
       console.error('Ошибка при обновлении токена:', error);
       return null;
@@ -33,7 +31,7 @@ const apiAxios = async <T>(config: AxiosRequestConfig): Promise<AxiosResponse<T>
         if (newToken) {
           config.headers = {
             ...(config.headers || {}),
-            Authorization: `Bearer ${newToken}`,
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
           };
           return await axios(config);
         }

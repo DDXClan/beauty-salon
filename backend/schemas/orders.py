@@ -27,7 +27,7 @@ class OrderCreate(BaseModel):
         return value
     
 class OrderUpdate(BaseModel):
-    total_price: Optional[float] = Field(ge=0)
+    total_price: Optional[float] = Field(ge=0, default=None)
     status: Optional[OrderStatus] = None
     finished_at: Optional[datetime] = None
     appointment_time: Optional[datetime] = None

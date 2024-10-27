@@ -4,6 +4,7 @@ class Status(Enum):
     SUCCESS = 'SUCCESS'
     FILLED = 'FILLED'
     NOT_FOUND = 'NOT_FOUND'
+    UNAUTHORIZED = 'UNAUTHORIZED'
 
 class Roles(Enum):
     ADMIN = 'ADMIN'
