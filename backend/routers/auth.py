@@ -23,10 +23,10 @@ async def login(username: str = Form(...), password: str = Form(...), auth_servi
 
 
 @router.get('/refresh', status_code=200)
-async def refresh(request: Request, auth_service: AuthService = Depends(get_auth_service), user = Depends(get_current_user)):
+async def refresh(request: Request, auth_service: AuthService = Depends(get_auth_service)):
     token = request.cookies.get('update_token')
-    if not user and not token:
-        raise HTTPException(status_code=401, detail={'status', Status.UNAUTHORIZED.value})
+    if not token:
+        raise HTTPException(status_code=401, detail={'status': Status.UNAUTHORIZED.value})
     new_token, new_update_token = auth_service.refresh_token(token)
     response = JSONResponse(content=new_token)
     response.set_cookie(key='update_token', value=new_update_token, httponly=True, max_age=timedelta(days=60).total_seconds())

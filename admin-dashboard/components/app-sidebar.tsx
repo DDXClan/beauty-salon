@@ -27,7 +27,7 @@ const items = [
     },
     {
       title: "Review",
-      url: "#",
+      url: "/reviews",
       icon: Star,
     },
   ]
