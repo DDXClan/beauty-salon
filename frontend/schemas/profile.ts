@@ -3,4 +3,5 @@ export type Profile = {
     username: string;
     phone_number: string;
     image?: string;
+    rewiews?: string;
 }

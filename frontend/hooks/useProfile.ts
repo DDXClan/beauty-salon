@@ -4,7 +4,8 @@ import { getOrdersProfile } from "@/api/profile";
 import { updateProfile } from "@/api/profile";
 import type { Profile } from "@/schemas/profile";
 import type { Orders } from "@/schemas/orders";
-import { patchProfile } from "@/api/profile";
+import { patchProfileImage } from "@/api/profile";
+import { useToast } from "./use-toast";
 
 export const useProfile = () => {
   const [loading, setLoading] = useState(true);
@@ -88,21 +89,33 @@ export const useUpdateProfile = () => {
   };
 
 
-const handleUpdateImage = async (image: string) => {
-  const access_token = localStorage.getItem('access_token');
-  if (!access_token) {
-      setError('token отсутствует');
-      return;
-  }
-  try {
-      setLoading(true);
-      await patchProfile(access_token, { image });
-  } catch {
-      setError('Ошибка обновления изображения профиля.');
-  } finally {
-      setLoading(false);
-  }
+  const {toast} = useToast();
+  const handleUpdateImage = async (file: File) => { 
+    const access_token = localStorage.getItem('access_token');
+    if (!access_token) {
+        setError('token отсутствует');
+        return;
+    }
+    try {
+        setLoading(true);
+        
+        const formData = new FormData();
+        formData.append('image', file);  
+        await patchProfileImage(access_token, formData);  
+        toast({
+            title: "Изображение обновлено",
+            description: "Ваше изображение профиля успешно обновлено."
+
+        });
+    } catch (error) {
+        toast({
+            title: "Ошибка обновления картинки.",
+            description: "Картинка не была обновлена."
+        });
+    } finally {
+        setLoading(false);
+    }
 };
 
-return { handleUpdateProfile, handleUpdateImage, loading, error };
-};
+  return { handleUpdateProfile, handleUpdateImage, loading, error };
+}

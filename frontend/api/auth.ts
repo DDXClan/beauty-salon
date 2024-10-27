@@ -24,3 +24,17 @@ export const login = async (username: string, password: string): Promise<LoginRe
 
   return response.data;
 };
+
+export const signUp = async (username: string, password: string, phone_number: string): Promise<LoginResponse> => {
+  const response = await axios.post<LoginResponse>('http://127.0.0.1:8000/api/auth/signup', {
+      username,
+      password,
+      phone_number,
+  }, {
+      headers: {
+          'Content-Type': 'application/json',
+      },
+  });
+
+  return response.data; 
+};

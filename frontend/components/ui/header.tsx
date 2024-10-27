@@ -24,6 +24,25 @@ import {
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu"
 
+
+  import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+  } from "@/components/ui/dialog"
+  import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+  } from "@/components/ui/accordion"
+import { Button } from "./button";
+
+import Settings from "./test";
+
  
 
 const Header = () => {
@@ -49,7 +68,7 @@ const Header = () => {
         window.location.reload(); 
     };
     
-    
+
     return ( 
         <div className="header">
             <nav className="header-nav">
@@ -74,17 +93,20 @@ const Header = () => {
                             <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                 <Avatar>
-                                <AvatarImage src={profile.profile?.image} alt="avatar" />
+                                <AvatarImage src={`http://localhost:8000/${profile.profile.image}`} alt="avatar" />
                                 <AvatarFallback>{getShortenedUsername(profile.profile?.username)}</AvatarFallback>
                                 </Avatar>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent className="w-58">
+                                
                                 <DropdownMenuLabel>{profile.profile?.username}</DropdownMenuLabel>
                                 <DropdownMenuSeparator />
                                 <DropdownMenuItem><Link href="/profile">Профиль</Link></DropdownMenuItem>
-                                <DropdownMenuItem><Link href="/settings">Настройки</Link></DropdownMenuItem>
+                                <Settings />
+                                {/* <DropdownMenuItem><Link href="/settings">Настройки</Link></DropdownMenuItem> */}
                                 <DropdownMenuSeparator />
                                 <DropdownMenuItem style={{color: 'red'}}><button onClick={handleLogout}>Выход</button></DropdownMenuItem>
+                                
                             </DropdownMenuContent>
                             </DropdownMenu>
                         ) : (

@@ -5,7 +5,7 @@
 
 
 .settings__form{
-    max-width:200px;
+    /* max-width:200px; */
 }
 
 
@@ -29,4 +29,14 @@
 
 .label__settings{
     color: rgba(255, 255, 255, 0.479);
+}
+
+.settings__form-container{
+    width: 100%;
+}
+
+
+.settings__form__image{
+    text-align: center;
+    width: 100%;
 }

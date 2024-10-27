@@ -25,9 +25,12 @@ export const updateProfile = async (access_token: string, data: Profile): Promis
     return response.data;
 };
 
-export const patchProfile = async (access_token: string, data: Partial<Profile>): Promise<Profile> => {
-  const response = await axios.patch<Profile>("http://127.0.0.1:8000/api/users/", data, {
-      headers: { Authorization: `Bearer ${access_token}` },
-  });
-  return response.data;
-};
+export const patchProfileImage = async (access_token: string, formData: FormData): Promise<Profile> => {
+    const response = await axios.patch<Profile>("http://127.0.0.1:8000/api/users/", formData, {
+        headers: {
+            Authorization: `Bearer ${access_token}`,
+            'Content-Type': 'multipart/form-data',  
+        },
+    });
+    return response.data;
+  };

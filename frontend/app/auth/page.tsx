@@ -20,17 +20,25 @@ import {
   } from "@/components/ui/tabs"
 
 import { useLogin } from "@/hooks/useLogin";
+import { useSignup } from "@/hooks/useSingup"
 
 
 const Auth = () => {
     const { handleLogin, loading, error } = useLogin();
+    const { handleSignup, loading: loadingSingup, error: errorSingup } = useSignup();
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');;
+    const [phone_number, setPhone] = React.useState('');
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         handleLogin(username, password);
-        
       };
+      
+      const onSignupSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        handleSignup(username, password, phone_number); 
+    };
+
     return ( 
         <Tabs defaultValue="login" className="w-[400px]" style={{margin: "0 auto", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
         <TabsList className="grid w-full grid-cols-2">
@@ -76,14 +84,17 @@ const Auth = () => {
             </CardDescription>
             </CardHeader>
             <CardContent>
+            <form onSubmit={onSignupSubmit}>
             <div className="grid gap-4">
                 <div className="grid gap-2">
                     <Label htmlFor="username">Имя пользователя</Label>
-                    <Input id="username" type="text"  required />
+                    <Input id="username" type="text" value={username} onChange={(e) => setUsername(e.target.value)}  required />
                     <Label htmlFor="phone">Номер телефона</Label>
                     <Input
                         id="phone"
                         type="phone"
+                        value={phone_number}
+                        onChange={(e) => setPhone(e.target.value)}
                         required
                     />
                 </div>
@@ -91,12 +102,13 @@ const Auth = () => {
                     <div className="flex items-center">
                         <Label htmlFor="password">Пароль</Label>
                     </div>
-                <Input id="password" type="password" required />
+                <Input id="password" value={password} onChange={(e) => setPassword(e.target.value)} type="password" required />
                 </div>
                 <Button type="submit" className="w-full">
                     Зерегестрироваться
                 </Button>
             </div>
+            </form>
             </CardContent>
         </Card>
         </TabsContent>
